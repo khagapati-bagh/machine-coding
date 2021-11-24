@@ -4,19 +4,19 @@ import com.game.constant.Constant;
 import com.game.model.Player;
 import com.game.service.BoardService;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
-        // write your code here
+    private static void helper(Scanner scanner) {
+        System.out.println("**********************\n   New Game Started\n**********************");
         BoardService boardService = new BoardService();
 
         List<Player> playerList = new ArrayList<>();
-
-        Scanner scanner = new Scanner(System.in);
 
         int numberOfPlayer = 0;
         while (numberOfPlayer == 0) {
@@ -33,7 +33,7 @@ public class Main {
             String name = scanner.next();
             Player player = new Player(name, choice.toUpperCase().charAt(0));
             playerList.add(player);
-            System.out.println(player.toString());
+            //System.out.println(player.toString());
         }
 
         //System.out.println("Enter Board Size");
@@ -65,5 +65,12 @@ public class Main {
             }
         }
         System.out.println("Game Over");
+    }
+
+    public static void main(String[] args) throws FileNotFoundException {
+        // write your code here
+        helper(new Scanner(new File(args[0])));
+        helper(new Scanner(new File(args[1])));
+        helper(new Scanner(new File(args[2])));
     }
 }
