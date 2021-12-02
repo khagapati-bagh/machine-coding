@@ -37,13 +37,18 @@ public class Main {
             String edit = line.substring(0, line.indexOf("\""));
             switch (edit) {
                 case Constants.ADD_REVIEW:
-
+                    int addReview = line.length() - edit.length() - 1;
+                    String reviewDetails = line.substring(edit.length(), addReview);
+                    String[] commands = reviewDetails.split(",");
+                    applicationService.addReview(commands[0], commands[1], Integer.parseInt(commands[2]));
                     break;
                 case Constants.UPDATE_REVIEW:
                     break;
                 case Constants.DELETE_REVIEW:
                     break;
                 case Constants.LIST_REVIEW:
+                    int listReviewLength = line.length() - edit.length() - 1;
+                    applicationService.listReview(line.substring(edit.length() + 1, listReviewLength - 1));
                     break;
                 case Constants.LIST_TOP:
                     break;

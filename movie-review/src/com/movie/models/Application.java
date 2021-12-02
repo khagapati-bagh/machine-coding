@@ -2,6 +2,7 @@ package com.movie.models;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,10 +15,10 @@ public @Data class Application {
     Map<String, String> movieReview;
 
     public Application() {
-        this.users = new HashMap<>();
-        this.movies = new HashMap<>();
-        this.reviews = new HashMap<>();
-        this.userReview = new HashMap<>();
-        this.movieReview = new HashMap<>();
+        this.users = new HashMap<String, User>();
+        this.movies = new HashMap<String, Movie>();
+        this.reviews = new HashMap<String , Review>();
+        this.userReview = new HashMap<String, List<String>>();
+        this.movieReview = new HashMap<String, String >();
     }
 }
